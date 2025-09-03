@@ -1,0 +1,23 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+backend/.env
+backend/data/history.sqlite3
+backend/reports/
+# X-ray images/masks are NOT committed (too large, licence restrictions)
+backend/data/xray/images/*
+backend/data/xray/masks/*
+!backend/data/**/.gitkeep
+# ECG data (Norwegian Endurance Athlete DB, CC BY 4.0) IS committed so the app works on clone
+backend/data/ecg/*
+!backend/data/ecg/ath_*
+!backend/data/ecg/manifest.json
+!backend/data/ecg/DATA_LICENSE.txt
+!backend/data/ecg/SHA256SUMS.txt
+# node
+node_modules/
+frontend/dist/
+frontend/.env
+.DS_Store

@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Patient Health Data Analyzer - "Clinical Monitor" theme
+   ------------------------------------------------------------
+   ALL colours come from the CSS variables below (Material-3 style
+   design tokens, same naming as Google Stitch exports).
+   To apply a new design: replace the values in :root (dark) and
+   .light (light). Components never hard-code colours.
+   ============================================================ */
+
+/* Source: Google Stitch export "Clinical Monitor Neo-Dark" (DESIGN.md) */
+:root {
+  color-scheme: dark;
+  --background: #09151a;
+  --surface: #09151a;
+  --surface-dim: #09151a;
+  --surface-bright: #2f3b40;
+  --surface-container-lowest: #041015;
+  --surface-container-low: #111d22;
+  --surface-container: #152126;
+  --surface-container-high: #202c31;
+  --surface-container-highest: #2b373c;
+  --surface-variant: #2b373c;
+  --surface-tint: #49dccb;
+  --on-background: #d8e4eb;
+  --on-surface: #d8e4eb;
+  --on-surface-variant: #bbcac6;
+  --outline: #859490;
+  --outline-variant: #3c4947;
+  --inverse-surface: #d8e4eb;
+  --inverse-on-surface: #263237;
+  --inverse-primary: #006a61;
+  --primary: #71fdeb;
+  --on-primary: #003732;
+  --primary-container: #4fe0cf;
+  --on-primary-container: #006058;
+  --primary-fixed: #6cf8e7;
+  --primary-fixed-dim: #49dccb;
+  --on-primary-fixed: #00201c;
+  --on-primary-fixed-variant: #005049;
+  --secondary: #92ccff;
+  --on-secondary: #003351;
+  --secondary-container: #00699e;
+  --on-secondary-container: #c8e3ff;
+  --secondary-fixed: #cce5ff;
+  --secondary-fixed-dim: #92ccff;
+  --on-secondary-fixed: #001d31;
+  --on-secondary-fixed-variant: #004b73;
+  --tertiary: #9af8e9;
+  --on-tertiary: #003731;
+  --tertiary-container: #7ddbcd;
+  --on-tertiary-container: #006057;
+  --tertiary-fixed: #95f3e4;
+  --tertiary-fixed-dim: #79d7c8;
+  --on-tertiary-fixed: #00201c;
+  --on-tertiary-fixed-variant: #005048;
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+  --success: #5ee08a;
+  --on-success: #00391b;
+  --warning: #ffc857;
+  --on-warning: #3d2c00;
+  --signal: #4fe0cf;      /* ECG trace */
+  --peak: #ff8a80;        /* R-peak markers */
+  --gt: #ff79c6;          /* ground-truth contour */
+}
+
+.light {
+  color-scheme: light;
+  --background: #f3f8f9;
+  --surface: #ffffff;
+  --surface-dim: #e6eef0;
+  --surface-bright: #ffffff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6fafb;
+  --surface-container: #edf4f5;
+  --surface-container-high: #e3ecee;
+  --surface-container-highest: #d6e2e5;
+  --surface-variant: #dbe6e8;
+  --surface-tint: #0b7f73;
+  --on-background: #0d1b1f;
+  --on-surface: #0d1b1f;
+  --on-surface-variant: #44585e;
+  --outline: #6f8389;
+  --outline-variant: #c3d2d6;
+  --inverse-surface: #1a2b30;
+  --inverse-on-surface: #e6f1f3;
+  --inverse-primary: #4fe0cf;
+  --primary: #0b7f73;
+  --on-primary: #ffffff;
+  --primary-container: #c8fff7;
+  --on-primary-container: #00201c;
+  --primary-fixed: #a6f5ea;
+  --primary-fixed-dim: #4fe0cf;
+  --on-primary-fixed: #00201c;
+  --on-primary-fixed-variant: #005048;
+  --secondary: #0b6aa3;
+  --on-secondary: #ffffff;
+  --secondary-container: #d4ebff;
+  --on-secondary-container: #001e30;
+  --secondary-fixed: #cfe9ff;
+  --secondary-fixed-dim: #7cc4ff;
+  --on-secondary-fixed: #001e30;
+  --on-secondary-fixed-variant: #004a6f;
+  --tertiary: #00796b;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #b9f6ec;
+  --on-tertiary-container: #00201c;
+  --tertiary-fixed: #95f3e4;
+  --tertiary-fixed-dim: #79d7c8;
+  --on-tertiary-fixed: #00201c;
+  --on-tertiary-fixed-variant: #005048;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+  --success: #16803c;
+  --on-success: #ffffff;
+  --warning: #946200;
+  --on-warning: #ffffff;
+  --signal: #0b7f73;
+  --peak: #d93b30;
+  --gt: #c2187d;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-background);
+  font-family: "Inter Variable", Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ---- Surfaces (Stitch: tonal cards, no hairline, soft shadow) ---- */
+.panel {
+  background: var(--surface-container-low);
+  box-shadow: 0 1px 2px color-mix(in srgb, black 25%, transparent);
+}
+.panel-inner { background: var(--surface-container-lowest); }
+.well { background: var(--surface-container-lowest); }
+.inner-glow { box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--primary-container) 12%, transparent), 0 1px 2px color-mix(in srgb, black 25%, transparent); }
+
+/* ---- Page background: radial teal bloom ---- */
+.mesh-bg {
+  background-color: var(--surface);
+  background-image: radial-gradient(ellipse at top, color-mix(in srgb, var(--surface-container-high) 30%, transparent), var(--surface) 55%, var(--surface-container-lowest));
+}
+
+/* ---- ECG-paper grid behind charts ---- */
+.ecg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--outline) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--outline) 14%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---- Inputs ---- */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; height: 4px; border-radius: 999px;
+  background: var(--surface-container-highest); outline: none; width: 100%; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--primary); cursor: pointer;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 22%, transparent);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px; border: none; border-radius: 50%; background: var(--primary); cursor: pointer;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 22%, transparent);
+}
+select, input[type="number"], input[type="text"] {
+  background: var(--surface-container-lowest); color: var(--on-surface); border: 0;
+  border-radius: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.75rem; width: 100%;
+}
+select { appearance: none; -webkit-appearance: none; padding-right: 2rem; }
+select:focus, input:focus-visible { outline: 1px solid var(--primary); outline-offset: 0; }
+
+/* ---- Scrollbars ---- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--outline-variant); border-radius: 10px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ---- Drawer / toast / spinner ---- */
+.drawer { transition: transform 0.3s ease; }
+.drawer-overlay { transition: opacity 0.3s ease; }
+body.drawer-open { overflow: hidden; }
+@keyframes toastSlideIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.toast-slide-in { animation: toastSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 0.8s linear infinite; }
+@keyframes heartbeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+.animate-heartbeat { animation: heartbeat 1.2s ease-in-out infinite; }
+@keyframes sweep { from { stroke-dashoffset: 600; } to { stroke-dashoffset: 0; } }
+.ecg-sweep { stroke-dasharray: 600; animation: sweep 3.2s linear infinite; }
+
+/* Recharts text/grid follow the theme */
+.recharts-cartesian-axis-tick-value { fill: var(--on-surface-variant); font-size: 11px; font-family: "JetBrains Mono", ui-monospace, monospace; }
+.recharts-legend-item-text { color: var(--on-surface-variant) !important; font-size: 12px; }
+
+/* ---- Tonal utility classes (opacity-safe replacements for bg-primary/10 etc.) ---- */
+.tint-primary   { background: color-mix(in srgb, var(--primary) 14%, transparent);   color: var(--primary); }
+.tint-secondary { background: color-mix(in srgb, var(--secondary) 14%, transparent); color: var(--secondary); }
+.tint-tertiary  { background: color-mix(in srgb, var(--tertiary) 16%, transparent);  color: var(--tertiary); }
+.tint-error     { background: color-mix(in srgb, var(--error) 14%, transparent);     color: var(--error); }
+.tint-success   { background: color-mix(in srgb, var(--success) 14%, transparent);   color: var(--success); }
+.tint-warning   { background: color-mix(in srgb, var(--warning) 16%, transparent);   color: var(--warning); }
+.tint-neutral   { background: color-mix(in srgb, var(--on-surface) 7%, transparent); color: var(--on-surface-variant); }
+.bd-primary   { border-color: color-mix(in srgb, var(--primary) 35%, transparent); }
+.bd-error     { border-color: color-mix(in srgb, var(--error) 35%, transparent); }
+.bd-success   { border-color: color-mix(in srgb, var(--success) 35%, transparent); }
+.bd-warning   { border-color: color-mix(in srgb, var(--warning) 35%, transparent); }
+.hover-tint:hover { background: color-mix(in srgb, var(--on-surface) 7%, transparent); }
+.scrim { background: color-mix(in srgb, black 60%, transparent); }
+.bg-primary-soft { background: color-mix(in srgb, var(--primary) 12%, transparent); }
+.btn-primary {
+  background: var(--primary-container); color: var(--on-primary-container);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 35%, transparent), 0 6px 18px -8px color-mix(in srgb, var(--primary-container) 60%, transparent);
+}
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-primary:disabled { opacity: 0.5; filter: none; cursor: not-allowed; }
+.btn-ghost { background: var(--surface-container-high); color: var(--on-surface); }
+.btn-ghost:hover { background: var(--surface-bright); }
+.nav-active { background: var(--surface-container-high); color: var(--primary); border-left: 2px solid var(--primary); }

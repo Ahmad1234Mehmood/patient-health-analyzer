@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MAINS_HZ=50
+    volumes:
+      # keep datasets + saved history on your machine (drop real data into ./backend/data)
+      - ./backend/data:/app/backend/data

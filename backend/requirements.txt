@@ -1,0 +1,22 @@
+# Patient Health Data Analyzer - backend dependencies
+# Tested with Python 3.11 - 3.13. Version ranges (not hard pins) so pip can
+# pick wheels that exist for your OS / Python version.
+
+# --- Web framework ---
+Flask>=3.0,<4
+flask-cors>=4.0
+python-dotenv>=1.0
+gunicorn>=22.0; platform_system != "Windows"   # production server (Linux/macOS/Docker)
+waitress>=3.0; platform_system == "Windows"    # production server (Windows)
+
+# --- Scientific core (signal + image processing) ---
+numpy>=1.26
+scipy>=1.11
+opencv-python-headless>=4.9
+Pillow>=10.2
+
+# --- Physiological signal I/O (PhysioNet WFDB format) ---
+wfdb>=4.1
+
+# --- Tests ---
+pytest>=8.0

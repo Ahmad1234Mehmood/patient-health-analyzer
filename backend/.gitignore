@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+*.sqlite3
+data/raw/
+data/xray/images/*
+data/xray/masks/*
+!data/**/.gitkeep
+data/ecg/*
+!data/ecg/ath_*
+!data/ecg/manifest.json
+!data/ecg/DATA_LICENSE.txt
+!data/ecg/SHA256SUMS.txt
+.pytest_cache/

@@ -1,0 +1,114 @@
+{
+ "ath_001": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_002": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_003": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_004": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_005": {
+  "label": "Sinus bradycardia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_006": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_007": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_008": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_009": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_010": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_011": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_012": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_013": {
+  "label": "Sinus bradycardia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_014": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_015": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_016": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_017": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_018": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_019": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_020": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_021": {
+  "label": "Sinus arrhythmia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_022": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_023": {
+  "label": "Sinus bradycardia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_024": {
+  "label": "Sinus bradycardia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_025": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_026": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_027": {
+  "label": "Sinus bradycardia",
+  "source": "Norwegian Athlete ECG DB"
+ },
+ "ath_028": {
+  "label": "Normal sinus rhythm",
+  "source": "Norwegian Athlete ECG DB"
+ }
+}

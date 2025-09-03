@@ -1,0 +1,15 @@
+Chest X-ray images and lung masks in this folder are from:
+
+  "Chest X-ray dataset for lung segmentation" (Montgomery County subset)
+  Source: Mendeley Data, https://data.mendeley.com/datasets/8gf9vpkhgy/2
+  License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+  Original Montgomery County Chest X-ray Set:
+  Jaeger S, Candemir S, Antani S, Wang YX, Lu PX, Thoma G.
+  "Two public chest X-ray datasets for computer-aided screening of pulmonary diseases."
+  Quant Imaging Med Surg. 2014;4(6):475-477.
+
+These files are NOT included in this repository (too large).
+Download Montgomery.zip from the Mendeley link above and run:
+
+  python scripts/import_real_data.py xray --src /path/to/Montgomery --max 138 --clear-synthetic
