@@ -96,3 +96,5 @@ def detect_r_peaks(x: np.ndarray, fs: float) -> np.ndarray:
         else:
             keep.append(p)
     return np.asarray(keep, dtype=int)
+
+# v2
