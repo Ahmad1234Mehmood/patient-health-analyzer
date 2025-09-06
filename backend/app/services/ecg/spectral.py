@@ -85,3 +85,5 @@ def spectrum_analysis(raw: np.ndarray, filtered: np.ndarray, fs: float, mains_hz
         "powerline_excess_db_filtered": powerline_excess_db(f_w, p_filt, mains_hz),
         "mains_hz": mains_hz,
     }
+
+# v2
