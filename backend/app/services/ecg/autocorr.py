@@ -64,3 +64,5 @@ def autocorr_analysis(
         "hr_bpm": 60.0 / peak_lag if peak_lag else None,
         "regularity": float(np.clip(peak_val, 0, 1)) if peak_val is not None else None,
     }
+
+# v2
