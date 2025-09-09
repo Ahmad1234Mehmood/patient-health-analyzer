@@ -38,3 +38,5 @@ def compute_hrv(peaks: np.ndarray, fs: float) -> dict:
         poincare={"x": rr[:-1], "y": rr[1:], "sd1_ms": float(sd1), "sd2_ms": sd2},
     )
     return out
+
+# v2
