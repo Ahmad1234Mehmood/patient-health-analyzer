@@ -83,3 +83,5 @@ def signal_quality(raw: np.ndarray, filtered: np.ndarray, fs: float, mains_hz: f
         "flatline_fraction": flat,
         "clipping_fraction": clip,
     }
+
+# v2
