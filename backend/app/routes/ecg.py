@@ -62,3 +62,5 @@ def filter_response():
     except ValueError:
         raise ApiError("Query parameters must be numbers", 400)
     return jsonify(to_jsonable(filters.frequency_response(low, high, order, fs)))
+
+# v2
