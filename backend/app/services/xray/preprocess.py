@@ -32,3 +32,5 @@ def enhance(img: np.ndarray, clip_limit: float = 2.0, tile: int = 8, blur_k: int
 def histogram(img: np.ndarray, bins: int = 64) -> list[int]:
     h = cv2.calcHist([img], [0], None, [bins], [0, 256]).ravel()
     return h.astype(int).tolist()
+
+# v2
