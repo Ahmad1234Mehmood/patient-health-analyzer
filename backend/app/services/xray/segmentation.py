@@ -154,3 +154,5 @@ def split_left_right(mask: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     for l in comps[1:]:
         right[labels == l] = 255
     return left, right
+
+# v2
