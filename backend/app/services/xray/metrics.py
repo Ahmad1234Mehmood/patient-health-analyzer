@@ -84,3 +84,5 @@ def lung_measurements(original: np.ndarray, mask: np.ndarray, edges: np.ndarray,
         out["thoracic_width_px"] = int(xs.max() - xs.min() + 1)
         out["lung_height_px"] = int(ys.max() - ys.min() + 1)
     return out
+
+# v2
