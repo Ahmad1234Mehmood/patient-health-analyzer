@@ -75,3 +75,5 @@ def frequency_response(low_hz: float, high_hz: float, order: int, fs: float, n_p
         "low_hz": low_hz,
         "high_hz": high_hz,
     }
+
+# ECG pipeline complete
