@@ -24,3 +24,5 @@ def delete_one(analysis_id: int):
 def clear():
     current_app.extensions["history"].clear()
     return jsonify(cleared=True)
+
+# v2
