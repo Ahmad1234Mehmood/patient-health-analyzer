@@ -67,3 +67,5 @@ def create_app(config: Config | None = None) -> Flask:
             return send_from_directory(dist, "index.html")
 
     return app
+
+# v2
