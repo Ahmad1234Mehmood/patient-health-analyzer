@@ -43,3 +43,5 @@ def load_config() -> Config:
         db_path=_path("DB_PATH", data_dir / "history.sqlite3"),
         frontend_dist=_path("FRONTEND_DIST", BASE_DIR.parent / "frontend" / "dist"),
     )
+
+# v2
