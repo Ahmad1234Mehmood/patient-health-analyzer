@@ -10,3 +10,5 @@ class ApiError(Exception):
         self.message = message
         self.status = status
         self.code = code
+
+# v2
