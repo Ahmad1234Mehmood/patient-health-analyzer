@@ -92,3 +92,5 @@ def test_quality_index_separates_clean_from_noisy():
 
     clean, noisy = quality(0.015), quality(0.12)
     assert clean["label"] == "good" and noisy["score"] < clean["score"] - 20
+
+# v2
