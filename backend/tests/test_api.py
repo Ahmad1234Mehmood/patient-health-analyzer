@@ -97,3 +97,5 @@ def test_bad_upload_rejected(client):
     assert r.status_code == 415
     r = client.post("/api/v1/ecg/upload", data={"files": (io.BytesIO(b"abc"), "x.exe")}, content_type="multipart/form-data")
     assert r.status_code == 415
+
+# v2
