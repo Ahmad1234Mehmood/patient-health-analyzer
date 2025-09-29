@@ -58,3 +58,5 @@ def test_batch_evaluation_summary():
     res = evaluate_batch(items, XrayParams())
     assert res["n"] == 4 and res["summary"]["dice"]["mean"] > 0.9
     assert sum(res["dice_histogram"]["counts"]) == 4
+
+# v2
