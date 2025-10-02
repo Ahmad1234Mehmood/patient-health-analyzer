@@ -31,3 +31,5 @@ def canny(img: np.ndarray, low: float | None = None, high: float | None = None) 
         low = 0.5 * high
     low, high = float(min(low, high)), float(max(low, high))
     return cv2.Canny(img, low, high), low, high
+
+# X-ray pipeline complete
