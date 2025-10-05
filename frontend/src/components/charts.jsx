@@ -240,3 +240,5 @@ export function DiceHistogram({ hist, h = 240 }) {
     </Box>
   );
 }
+
+// v2
