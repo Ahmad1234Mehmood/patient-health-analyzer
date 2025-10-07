@@ -60,3 +60,5 @@ export default function Sidebar({ variant = "desktop", open = false, onClose }) 
     </aside>
   );
 }
+
+// v2
