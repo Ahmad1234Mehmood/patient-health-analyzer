@@ -28,3 +28,5 @@ export const evaluateXray = (params) => api.get("/api/v1/xray/evaluate", { param
 export const getHistory = () => api.get("/api/v1/history");
 export const deleteHistory = (id) => api.delete(`/api/v1/history/${id}`);
 export const clearHistory = () => api.delete("/api/v1/history");
+
+// v2
