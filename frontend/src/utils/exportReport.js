@@ -127,3 +127,5 @@ export function exportXrayReport(r) {
   footer(doc);
   doc.save(`Xray_report_${r.image_id}.pdf`);
 }
+
+// v2
