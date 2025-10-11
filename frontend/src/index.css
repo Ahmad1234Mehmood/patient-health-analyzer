@@ -242,3 +242,5 @@ body.drawer-open { overflow: hidden; }
 .btn-ghost { background: var(--surface-container-high); color: var(--on-surface); }
 .btn-ghost:hover { background: var(--surface-bright); }
 .nav-active { background: var(--surface-container-high); color: var(--primary); border-left: 2px solid var(--primary); }
+
+/* v2 */
