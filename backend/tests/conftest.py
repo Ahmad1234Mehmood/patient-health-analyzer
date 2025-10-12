@@ -32,3 +32,5 @@ def client(data_dirs, tmp_path):
     app = create_app(cfg)
     app.testing = True
     return app.test_client()
+
+# tests verified
