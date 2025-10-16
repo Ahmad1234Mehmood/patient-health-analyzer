@@ -19,3 +19,5 @@ COPY --from=web /web/dist frontend/dist
 WORKDIR /app/backend
 EXPOSE 5000
 CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--timeout", "300", "wsgi:app"]
+
+
