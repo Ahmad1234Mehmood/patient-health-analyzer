@@ -24,3 +24,5 @@ BACK=$!
 FRONT=$!
 trap 'kill $BACK $FRONT 2>/dev/null; exit 0' INT TERM
 wait
+
+
