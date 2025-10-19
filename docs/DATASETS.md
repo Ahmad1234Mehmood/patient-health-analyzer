@@ -103,3 +103,5 @@ python scripts/evaluate_segmentation.py   # Dice / IoU / HD95 on real masks
 ```
 
 MIMIC-CXR is credentialed (PhysioNet account + CITI training) and has **no lung masks**, so it cannot be used for Dice without your own annotation. Do not upload it to Kaggle or commit it. Check each Kaggle dataset's licence before redistributing.
+
+
