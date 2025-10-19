@@ -98,3 +98,5 @@ Open http://localhost:5000. Real data: put it in `backend/data/…` on your mach
 | add a segmentation method | `backend/app/services/xray/segmentation.py` (`_candidate`, `METHODS`) + button in `XrayLab.jsx` |
 | re-theme the UI | `frontend/src/index.css` (variables) |
 | add an API endpoint | new file in `backend/app/routes/` + `register_blueprint` in `app/__init__.py` |
+
+
