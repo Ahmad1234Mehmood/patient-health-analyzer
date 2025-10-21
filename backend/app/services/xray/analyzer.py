@@ -137,3 +137,5 @@ def evaluate_batch(items: list[tuple[str, np.ndarray, np.ndarray]], p: XrayParam
         "fraction_dice_above_0_9": float(np.mean(dice >= 0.9)),
         "params": p.__dict__,
     })
+
+# v2
