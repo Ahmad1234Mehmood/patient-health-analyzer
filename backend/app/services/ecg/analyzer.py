@@ -173,3 +173,5 @@ def analyze_ecg(rec: ECGRecord, p: ECGParams) -> dict[str, Any]:
     result["autocorr"]["lags_s"] = np.asarray(ac["lags_s"])[ac_idx]
     result["autocorr"]["values"] = np.asarray(ac["values"])[ac_idx]
     return to_jsonable(result)
+
+# v2
