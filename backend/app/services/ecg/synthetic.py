@@ -128,3 +128,5 @@ def generate_dataset(out_dir: Path, n_records: int = 28, fs: int = 500, duration
         ids.append(rid)
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
     return ids
+
+# v2
