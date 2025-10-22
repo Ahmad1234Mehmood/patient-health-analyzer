@@ -42,3 +42,5 @@ def decimate_indices(n: int, max_points: int) -> np.ndarray:
     if n <= max_points:
         return np.arange(n)
     return np.unique(np.linspace(0, n - 1, max_points).astype(int))
+
+# v2
