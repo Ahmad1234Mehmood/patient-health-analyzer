@@ -94,3 +94,5 @@ def generate_dataset(image_dir: Path, mask_dir: Path, n_images: int = 40, size: 
         ids.append(rid)
     (image_dir / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
     return ids
+
+# v2
