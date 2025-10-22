@@ -1,80 +1,118 @@
 # Patient Health Data Analyzer
 
-A full-stack medical data processing workbench: 12-lead ECG signal analysis (Butterworth filtering, FFT, autocorrelation, R-peak detection, HRV) and chest X-ray image processing (CLAHE, Canny / Sobel edge detection, lung segmentation) with quantitative validation against expert segmentation masks.
+A full-stack web application for medical signal and image analysis: 12-lead **ECG signal processing** (Butterworth filtering, FFT, autocorrelation, R-peak detection, HRV) and **chest X-ray image processing** (CLAHE, Canny/Sobel edge detection, lung segmentation) with quantitative validation against expert segmentation masks.
 
-## Tech stack
+**Stack:** Python · Flask · NumPy · SciPy · OpenCV · WFDB · React 18 · Vite · Tailwind · Recharts  
+**Data:** 28 ECG recordings — Norwegian Endurance Athlete ECG Database (PhysioNet, CC BY 4.0) · 138 chest X-rays — Montgomery County TB dataset with expert lung masks (CC BY 4.0)
 
-**Backend:** Python · Flask · NumPy · SciPy · OpenCV · WFDB (PhysioNet)
-**Frontend:** React 18 · Vite · Tailwind · Recharts
-**Data:** PhysioNet 12-lead ECG (500 Hz, CC BY 4.0) · Montgomery County TB chest X-rays with expert lung masks (CC BY 4.0)
+---
 
 ## Features
 
-- **ECG Lab** - pick a record + lead, tune the Butterworth band-pass / notch live, and see: raw vs filtered signal with R-peaks · Welch PSD + FFT + band power · autocorrelation · RR tachogram & Poincaré · ensemble-average beat · 12-lead table · filter Bode plot · signal-quality score.
-- **X-ray Lab** - every pipeline stage visible (Original → CLAHE → Sobel → Canny → mask → overlay), 3 segmentation methods, lung measurements, histogram, ground-truth contour + Dice/IoU/HD95 when a mask exists.
-- **Validation** - batch evaluation on every image with a mask; Dice histogram, per-image table, method comparison.
-- **Datasets** - what is loaded, and one-command import of real data.
-- **PDF reports** (jsPDF) for any ECG or X-ray analysis, **history** of saved analyses (SQLite), **dark / light theme**, file **uploads** (WFDB `.hea+.dat`, CSV, NPY, NPZ, PNG, JPG).
+- **ECG Lab** — pick a record and lead, tune the Butterworth band-pass / notch live, and see: raw vs filtered signal with R-peaks · Welch PSD + FFT + band power · autocorrelation · RR tachogram & Poincaré · ensemble-average beat · 12-lead table · filter Bode plot · signal-quality score
+- **X-ray Lab** — every pipeline stage visible (Original → CLAHE → Sobel → Canny → mask → overlay), 3 segmentation methods, lung measurements, histogram, ground-truth contour + Dice/IoU/HD95
+- **Validation** — batch evaluation on every image with a mask; Dice histogram, per-image table, method comparison
+- **PDF reports** (jsPDF), history of saved analyses (SQLite), dark/light theme, file uploads (WFDB `.hea+.dat`, CSV, NPY, NPZ, PNG, JPG)
+
+---
+
+## Architecture
+
+```
+ ┌──────────────── React 18 + Vite (port 5173) ────────────────┐
+ │  Dashboard │ ECG Lab │ X-ray Lab │ Validation │ History     │
+ └───────────────────────────┬─────────────────────────────────┘
+                             │ JSON / multipart
+ ┌───────────────────────────▼─────────────────────────────────┐
+ │              Flask API  (port 5000)  /api/v1                │
+ ├───────────────────────────┬─────────────────────────────────┤
+ │  services/ecg             │  services/xray                  │
+ │  filters  (Butterworth)   │  preprocess (CLAHE)             │
+ │  rpeaks   (Pan-Tompkins)  │  edges (Sobel, Canny)           │
+ │  spectral (FFT, Welch)    │  segmentation (Otsu/kmeans/…)   │
+ │  autocorr · hrv · quality │  metrics (Dice, IoU, HD95)      │
+ └───────────────────────────┴─────────────────────────────────┘
+        data/ecg/*.hea,.dat        data/xray/images + masks
+```
+
+---
 
 ## Quick start
 
-**Needs:** Python 3.10-3.13, Node.js 18+ (20/22 recommended). No GPU. No API keys. Detailed guide with troubleshooting: [`docs/SETUP_GUIDE.md`](docs/SETUP_GUIDE.md).
-
-### Option A - one command (recommended)
-
-| OS | Command (from the project root) |
-|---|---|
-| Windows | double-click `run_windows.bat` (or run it in a terminal) |
-| macOS / Linux | `bash run.sh` |
-
-It creates a virtual environment, installs everything, generates sample data and starts both servers. Open **http://localhost:5173**.
-
-### Option B - manual (two terminals)
+**Requirements:** Python 3.10–3.13, Node.js 18+. No GPU. No API keys.
 
 ```bash
-# Terminal 1 - backend
+# Terminal 1 — backend
 cd backend
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env               # Windows: copy .env.example .env
-python run.py                      # → http://localhost:5000
+python run.py                    # → http://localhost:5000
 
-# Terminal 2 - frontend
+# Terminal 2 — frontend
 cd frontend
 npm install
-npm run dev                        # → http://localhost:5173
+npm run dev                      # → http://localhost:5173
 ```
 
-### Option C - production-style (single port)
+Or on Windows double-click `run_windows.bat` to do everything in one step.
 
-```bash
-cd frontend && npm install && npm run build      # creates frontend/dist
-cd ../backend && python run.py                   # Flask now serves the React app too → http://localhost:5000
-```
-
-### Option D - Docker
-
-```bash
-docker compose up --build        # → http://localhost:5000
-```
+---
 
 ## Data sources
 
-See [`docs/DATASETS.md`](docs/DATASETS.md) for full instructions. Short version:
+**ECG** — 28 twelve-lead recordings at 500 Hz are bundled in `backend/data/ecg/`.  
+Source: Norwegian Endurance Athlete ECG Database, PhysioNet, CC BY 4.0.
+
+**Chest X-ray** — 138 chest X-rays with expert lung masks from the Montgomery County TB dataset (CC BY 4.0).  
+Download `Montgomery.zip` from [Mendeley Data](https://data.mendeley.com/datasets/8gf9vpkhgy/2) and run:
 
 ```bash
 cd backend
-# ECG: copy your PhysioNet .hea/.dat pairs into data/ecg/   (or download open PTB-XL records)
-python scripts/fetch_physionet_ecg.py --n 28 --clear-synthetic
-
-# Chest X-ray: Montgomery images + merged lung masks
-python scripts/prepare_montgomery.py --src /path/to/MontgomerySet --clear-synthetic
-# MIMIC-CXR (credentialed access): copy chosen JPG/PNG files into data/xray/images/
+python scripts/import_real_data.py xray --src /path/to/Montgomery --max 138 --clear-synthetic
 ```
+
+---
+
+## Project structure
+
+```
+patient-health-analyzer/
+├── backend/
+│   ├── app/
+│   │   ├── routes/          # health · datasets · ecg · xray · history
+│   │   └── services/
+│   │       ├── ecg/         # filters · rpeaks · spectral · autocorr · hrv · quality · analyzer
+│   │       └── xray/        # preprocess · edges · segmentation · metrics · analyzer
+│   ├── scripts/             # import_real_data.py · evaluate_ecg.py · evaluate_segmentation.py
+│   ├── tests/               # 24 pytest tests: DSP, API, segmentation
+│   └── data/                # ecg/ · xray/images · xray/masks
+├── frontend/
+│   └── src/
+│       ├── pages/           # Dashboard · EcgLab · XrayLab · Validation
+│       └── components/      # Layout · Sidebar · charts · ui
+└── docs/
+    ├── SETUP_GUIDE.md
+    └── DATASETS.md
+```
+
+---
+
+## API endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/health` | liveness |
+| GET | `/api/v1/ecg/records` | list ECG records |
+| POST | `/api/v1/ecg/analyze` | full ECG analysis |
+| GET | `/api/v1/xray/images` | list X-ray images |
+| POST | `/api/v1/xray/analyze` | full X-ray analysis |
+| GET | `/api/v1/xray/evaluate` | batch Dice/IoU/HD95 |
+| GET | `/api/v1/history` | saved analyses |
+
+---
 
 ## Licence
 
-Code: MIT. Data: PhysioNet (PTB-XL, MIMIC-CXR - credentialed), NIH/NLM Montgomery County TB set - follow each dataset's licence and citation requirements.
-
-
+Code: MIT.  
+Data: Norwegian Endurance Athlete ECG Database (PhysioNet, CC BY 4.0) · Montgomery County TB Chest X-ray Set (NIH/NLM, CC BY 4.0).
